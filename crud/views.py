@@ -13,3 +13,13 @@ def service(req):
 
 def contact(req):
     return render(req, "contact.html")
+
+
+def add_data(req):
+    if req.method == "POST":
+        nm = req.POST["name"]
+        email = req.POST["email"]
+        phone = req.POST["phone"]
+        print(nm, email, phone)
+
+    return render(req, "add-data.html")
