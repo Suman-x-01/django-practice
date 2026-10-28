@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpRequest, HttpResponse
+from .models import UserData
+from django.contrib import messages
 
 
 # Create your views here.
@@ -21,5 +23,8 @@ def add_data(req):
         email = req.POST["email"]
         phone = req.POST["phone"]
         print(nm, email, phone)
+
+        UserData.objects.create(name=nm, email=email, phone=phone)
+        messages.success(req, "Data saved successfully!")
 
     return render(req, "add-data.html")
